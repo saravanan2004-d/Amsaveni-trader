@@ -395,17 +395,34 @@ function initSwiper(){
 function initForm(){
   const form = document.getElementById('contactForm');
   const note = document.getElementById('formNote');
+
   form.addEventListener('submit', (e)=>{
     e.preventDefault();
+
     const name = form.name.value.trim();
     const phone = form.phone.value.trim();
     const product = form.product.value.trim();
     const message = form.message.value.trim();
+
     const text = `Hello Amsaveni Traders, I'm ${name} (${phone}). I need: ${product}. ${message}`;
+
     note.textContent = 'Thank you — opening WhatsApp to send your enquiry...';
-    setTimeout(()=>{
-      window.open(`https://wa.me/919942138145?text=${encodeURIComponent(text)}`, '_blank');
-    }, 500);
+
+    const whatsappNumbers = [
+      "917868998445",
+      "919942138145"
+      
+    ];
+
+    whatsappNumbers.forEach((number, index)=>{
+      setTimeout(()=>{
+        window.open(
+          `https://wa.me/${number}?text=${encodeURIComponent(text)}`,
+          '_blank'
+        );
+      }, index * 2000);
+    });
+
     form.reset();
   });
 }
