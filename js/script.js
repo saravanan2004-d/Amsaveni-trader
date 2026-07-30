@@ -612,40 +612,29 @@ if (toggle) {
 
 
 // Video Sound
+// Video Sound
 
 window.addEventListener("load", () => {
 
     const video = document.querySelector(".products-video");
-    const btn = document.getElementById("unmuteBtn");
 
     if (video) {
 
         video.muted = true;
-        video.volume = 0;
+        video.volume = 1;
 
         video.play().catch(error => {
-            console.log("Autoplay error:", error);
+            console.log(error);
         });
 
-    }
 
+        video.addEventListener("click", () => {
 
-    if (btn && video) {
-
-        btn.addEventListener("click", () => {
-
+            video.removeAttribute("muted");
             video.muted = false;
             video.volume = 1;
 
-            video.play()
-            .then(() => {
-                console.log("Sound enabled");
-            })
-            .catch(error => {
-                console.log("Play error:", error);
-            });
-
-            btn.style.display = "none";
+            video.play();
 
         });
 
