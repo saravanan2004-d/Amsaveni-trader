@@ -58,6 +58,7 @@ function iconFor(kind,color){
 }
 
 /* ---------- Product data ---------- */
+let cart = [];
 const PRODUCTS = [
   {name:'Maize/Corn', kind:'grain', image:'assets/images/maize.png', bg:'#FBF3DC',desc:'Golden, well-dried maize graded for both feed and food-grade bulk orders.'},
 
@@ -97,7 +98,36 @@ const PRODUCTS = [
 ];
 
 const KIND_LABEL = {grain:'Grain / Millet', pulse:'Pulse / Bean', seed:'Seed', fryum:'Fryum'};
+function addToCart(product) {
 
+    if (!cart.includes(product)) {
+        cart.push(product);
+    }
+
+    document.getElementById("fproduct").value = cart.join(", ");
+
+    alert(product + " Added to Cart");
+}
+function sendRequirement() {
+
+    if (cart.length == 0) {
+        alert("Please add products first");
+        return;
+    }
+
+    let message = "Hello Amsaveni Traders\n\nI need these products:\n\n";
+
+    cart.forEach(function(item) {
+        message += "- " + item + "\n";
+    });
+
+    let phone = "919876543210"; // <-- inga unga WhatsApp number podunga
+
+    window.open(
+        "https://wa.me/" + phone + "?text=" + encodeURIComponent(message),
+        "_blank"
+    );
+}
 /* ---------- Build product grid ---------- */
 function buildProducts(){
   const grid = document.getElementById('productGrid');
@@ -106,27 +136,41 @@ function buildProducts(){
   let swiperHTML = '';
 
   PRODUCTS.forEach((p,i)=>{
-    gridHTML += `
-    <div class="product-card-outer" data-filter="${p.kind}">
-      <div class="product-card">
-        <div class="card-face card-front">
-          <div class="card-visual" style="background:${p.bg}">
-  <span class="card-tag">${KIND_LABEL[p.kind]}</span>
-  <img src="${p.image}" alt="${p.name}" class="product-image">
-</div>
-          <div class="card-front-body">
-            <h3>${p.name}</h3>
-            <p class="flip-hint">Hover to view details →</p>
-          </div>
-        </div>
-        <div class="card-face card-back" style="background:linear-gradient(155deg, var(--forest-dark), var(--forest-deep))">
-          <h3>${p.name}</h3>
-          <p>${p.desc}</p>
-          <span class="card-back-foot">AMSAVENI TRADERS · ${KIND_LABEL[p.kind]}</span>
-        </div>
-      </div>
-    </div>`;
+  gridHTML += `
+  <div class="product-card-outer" data-filter="${p.kind}">
+    <div class="product-card">
 
+      <div class="card-face card-front">
+
+        <div class="card-visual" style="background:${p.bg}">
+          <span class="card-tag">${KIND_LABEL[p.kind]}</span>
+          <img src="${p.image}" alt="${p.name}" class="product-image">
+        </div>
+
+        <div class="card-front-body">
+          <h3>${p.name}</h3>
+
+          <p class="flip-hint">Hover to view details →</p>
+
+          <button
+    class="add-cart-btn"
+    onclick="event.stopPropagation(); addToCart('${p.name}')">
+    Add to Cart
+</button>
+        </div>
+
+      </div>
+
+      <div class="card-face card-back" style="background:linear-gradient(155deg, var(--forest-dark), var(--forest-deep))">
+        <h3>${p.name}</h3>
+        <p>${p.desc}</p>
+        <span class="card-back-foot">
+          AMSAVENI TRADERS · ${KIND_LABEL[p.kind]}
+        </span>
+      </div>
+
+    </div>
+  </div>`;
     if(i < 8){
       swiperHTML += `
       <div class="swiper-slide">

@@ -327,7 +327,9 @@ h1,h2,h3,h4,h5{font-family:'Fraunces', serif;margin:0;font-weight:600;color:var(
   position:relative;width:100%;height:100%;transform-style:preserve-3d;
   transition:transform .7s var(--ease);
 }
-.product-card-outer:hover .product-card{transform:rotateY(180deg);}
+.product-card-outer:hover .product-card{
+    transform: rotateY(180deg);
+}
 .card-face{
   position:absolute;inset:0;border-radius:var(--radius-md);backface-visibility:hidden;
   overflow:hidden;box-shadow:var(--shadow-soft);
@@ -579,3 +581,22 @@ body{
     display:block;
 }
 
+.add-cart-btn{
+    margin-top:15px;
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    background:#d4af37;
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.add-cart-btn:hover{
+    background:#b89018;
+}
+.card-front{
+   
+}
