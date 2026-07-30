@@ -585,23 +585,71 @@ window.addEventListener('DOMContentLoaded', ()=>{
   // Dark Mode
   // ==========================
 
-  const toggle = document.getElementById("theme-toggle");
+const toggle = document.getElementById("theme-toggle");
 
-  if (localStorage.getItem("theme") === "dark") {
-      document.body.classList.add("dark");
-      toggle.textContent = "☀️";
-  }
+if (toggle) {
 
-  toggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark");
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
+        toggle.textContent = "☀️";
+    }
 
-      if (document.body.classList.contains("dark")) {
-          localStorage.setItem("theme", "dark");
-          toggle.textContent = "☀️";
-      } else {
-          localStorage.setItem("theme", "light");
-          toggle.textContent = "🌙";
-      }
-  });
+    toggle.addEventListener("click", () => {
+
+        document.body.classList.toggle("dark");
+
+        if (document.body.classList.contains("dark")) {
+            localStorage.setItem("theme", "dark");
+            toggle.textContent = "☀️";
+        } else {
+            localStorage.setItem("theme", "light");
+            toggle.textContent = "🌙";
+        }
+
+    });
+
+}
+
+
+// Video Sound
+
+window.addEventListener("load", () => {
+
+    const video = document.querySelector(".products-video");
+    const btn = document.getElementById("unmuteBtn");
+
+    if (video) {
+
+        video.muted = true;
+        video.volume = 0;
+
+        video.play().catch(error => {
+            console.log("Autoplay error:", error);
+        });
+
+    }
+
+
+    if (btn && video) {
+
+        btn.addEventListener("click", () => {
+
+            video.muted = false;
+            video.volume = 1;
+
+            video.play()
+            .then(() => {
+                console.log("Sound enabled");
+            })
+            .catch(error => {
+                console.log("Play error:", error);
+            });
+
+            btn.style.display = "none";
+
+        });
+
+    }
 
 });
+})

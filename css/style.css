@@ -298,7 +298,10 @@ h1,h2,h3,h4,h5{font-family:'Fraunces', serif;margin:0;font-weight:600;color:var(
 .about-feature{display:flex;align-items:center;gap:12px;font-weight:600;font-size:14.5px;color:var(--forest-deep);}
 
 /* =============== PRODUCTS =============== */
-.products-section{padding:110px 0 120px;background:var(--sage);position:relative;}
+.products-section{padding:110px 0 120px;position:relative;
+    overflow:hidden;
+    background:transparent;
+}
 .products-swiper-wrap{position:relative;margin-bottom:56px;}
 .productSwiper{padding:20px 6px 40px;}
 .swiper-slide{height:auto;}
@@ -622,4 +625,52 @@ body{
 
 .dark .contact-form label{
     color:#f5f5f5;
+}
+.products-section{
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Video */
+.products-video{
+    position: relative;
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+    z-index: 1;
+    display: block;
+}
+
+
+/* Content */
+.products-section .container{
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Sound Button */
+#unmuteBtn{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+
+    width: 50px;
+    height: 50px;
+
+    z-index: 999;
+
+    background: rgba(0,0,0,0.7);
+    color: white;
+
+    border: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+    font-size: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

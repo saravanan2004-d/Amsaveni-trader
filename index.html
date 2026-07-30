@@ -178,33 +178,44 @@
 
 <!-- ===================== PRODUCTS ===================== -->
 <section class="products-section" id="products">
-  <div class="container">
-    <div class="section-head reveal-up">
-      <p class="eyebrow eyebrow-dark">Our Commodities</p>
-      <h2 class="section-title">Products We Trade</h2>
-      <p class="section-desc">Eighteen carefully graded commodities, sourced directly from growers and moved through our yard with honest weighment — flip any card for details.</p>
+
+    <video class="products-video" autoplay muted loop playsinline preload="auto" controls controlsList="nodownload">
+    <source src="assets/videos/products-bg.mp4" type="video/mp4">
+</video>
+
+    <button id="unmuteBtn">🔊 Enable Sound</button>
+
+    <div class="products-overlay"></div>
+
+    <div class="container">
+        <div class="section-head reveal-up">
+            <p class="eyebrow eyebrow-dark">Our Commodities</p>
+            <h2 class="section-title">Products We Trade</h2>
+            <p class="section-desc">
+                Eighteen carefully graded commodities, sourced directly from growers and moved through our yard with honest weighment — flip any card for details.
+            </p>
+        </div>
+
+        <div class="products-swiper-wrap reveal-up">
+            <div class="swiper productSwiper">
+                <div class="swiper-wrapper" id="featuredSwiperWrap"></div>
+            </div>
+            <div class="swiper-button-prev product-nav product-prev"></div>
+            <div class="swiper-button-next product-nav product-next"></div>
+        </div>
+
+        <div class="product-filter reveal-up" id="productFilter">
+            <button class="filter-chip active" data-filter="all">All</button>
+            <button class="filter-chip" data-filter="grain">Grains &amp; Millets</button>
+            <button class="filter-chip" data-filter="pulse">Pulses &amp; Beans</button>
+            <button class="filter-chip" data-filter="seed">Seeds</button>
+            <button class="filter-chip" data-filter="fryum">Fryums</button>
+        </div>
+
+        <div class="product-grid" id="productGrid"></div>
     </div>
 
-    <div class="products-swiper-wrap reveal-up">
-      <div class="swiper productSwiper">
-        <div class="swiper-wrapper" id="featuredSwiperWrap"></div>
-      </div>
-      <div class="swiper-button-prev product-nav product-prev"></div>
-      <div class="swiper-button-next product-nav product-next"></div>
-    </div>
-
-    <div class="product-filter reveal-up" id="productFilter">
-      <button class="filter-chip active" data-filter="all">All</button>
-      <button class="filter-chip" data-filter="grain">Grains &amp; Millets</button>
-      <button class="filter-chip" data-filter="pulse">Pulses &amp; Beans</button>
-      <button class="filter-chip" data-filter="seed">Seeds</button>
-      <button class="filter-chip" data-filter="fryum">Fryums</button>
-    </div>
-
-    <div class="product-grid" id="productGrid"></div>
-  </div>
 </section>
-
 <!-- ===================== SERVICES ===================== -->
 <section class="services-section" id="services">
   <div class="hero-rows services-rows" aria-hidden="true"></div>
